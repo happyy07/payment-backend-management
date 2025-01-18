@@ -29,3 +29,7 @@ class Payment(BaseModel):
         if not re.match(r'^\+[1-9]\d{1,14}$', v):
             raise ValueError('Phone number must be in E.164 format')
         return v
+
+class PaymentUpdate(BaseModel):
+    payee_payment_status: Optional[str] = Field(None, pattern="^(completed|due_now|overdue|pending)$")
+    evidence_file_id: Optional[str] = None 
