@@ -13,7 +13,7 @@ Before setting up the backend, ensure you have the following installed:
 
    ```sh
    git clone https://github.com/happyy07/payment-backend-management.git
-   cd backend
+   cd payment-backend-management
    ```
 
 2. Install required dependencies:
