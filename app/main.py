@@ -8,6 +8,7 @@ from bson import ObjectId
 from gridfs import GridFS
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
+from pymongo import MongoClient
 import json
 import math
 
@@ -219,6 +220,16 @@ async def download_evidence(payment_id: str):
             "Content-Disposition": f"attachment; filename={evidence['filename'].replace(' ', '_')}"
         }
     )
+    
+@app.get("/test-connection")
+async def test_connection():
+    try:
+        client = MongoClient(os.getenv("MONGODB_URL"))
+        client.server_info()  # Will raise an exception if connection fails
+        return {"status": "MongoDB connection successful"}
+    except Exception as e:
+        return {"error": f"Failed to connect to MongoDB: {e}"}
+
 
 if __name__ == "__main__":
     import uvicorn
