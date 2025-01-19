@@ -45,7 +45,7 @@ app = FastAPI(lifespan=lifespan, default_response_class=CustomJSONResponse)
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],  # Add your frontend URL
+    allow_origins=["http://localhost:4200", "https://main.d3o5dni1h0nx3.amplifyapp.com"],  # Add your frontend URL
     allow_credentials=True,
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
